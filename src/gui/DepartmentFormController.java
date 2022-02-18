@@ -9,45 +9,61 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.entities.Department;
 
 public class DepartmentFormController implements Initializable {
 
+	private Department entityDep;
+
 	@FXML
 	private TextField txtId;
-	
-	@FXML 
+
+	@FXML
 	private TextField txtName;
-	
+
 	@FXML
 	private Label labelErrorName;
-	
+
 	@FXML
 	private Button btSave;
-	
-	@FXML 
+
+	@FXML
 	private Button btCancel;
-	
+
+	public void setDepartment(Department entityDep) {
+		this.entityDep = entityDep;
+	}
+
 	@FXML
 	public void onBtSaveAction() {
 		System.out.println("onBtSaveAction");
 	}
-	
-	
+
 	@FXML
 	public void onBtCancelAction() {
 		System.out.println("onBtCancelAction");
 	}
-	
+
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		
+
 		initializeNode();
 	}
-	
+
 	private void initializeNode() {
-		
+
 		Constraints.setTextFieldInteger(txtId);
 		Constraints.setTextFieldMaxLength(txtName, 30);
 	}
 
+	public void updateFormData() {
+
+		if (entityDep == null) {
+
+			throw new IllegalStateException("Entity was null");
+		}
+		
+		txtId.setText(String.valueOf(entityDep.getId()));
+		txtName.setText(entityDep.getName());
+	}
 }
