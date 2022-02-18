@@ -8,7 +8,7 @@ public class Department implements Serializable {
 
 	private Integer id;
 	private String name;
-
+	
 	public Department() {
 	}
 
@@ -31,10 +31,6 @@ public class Department implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 	@Override
