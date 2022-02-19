@@ -16,4 +16,13 @@ public class DepartmentService {
 
 	}
 
+	public void saveOrUpdate(Department obj) {
+		if (obj.getId() == null) {
+			depDao.insert(obj);
+		}
+		else {
+			depDao.update(obj);
+		}
+	}
+	
 }
